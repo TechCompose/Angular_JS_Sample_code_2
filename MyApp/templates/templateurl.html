@@ -1,0 +1,18 @@
+
+<div class="slider">
+  <div class="row">    
+    <div class="col-md-12" style="text-align: center;margin-left: 70px">      
+      <div class="slide" ng-repeat="image in images" ng-show="image.visible">
+        <img ng-src="img/{{image.src}}" style="width:300px; height: 200px" />
+      </div>
+    </div>
+  </div>  
+  <div class="row" style="margin-top:202px">
+    <div class="col-md-6" style="padding-left:70px">
+      <a href="#" ng-click="prev()">Prev
+    </div>
+    <div class="col-md-6" style="padding-left:22px">
+      <a href="#" ng-click="next()">Next
+    </div>
+  </div>  
+</div>

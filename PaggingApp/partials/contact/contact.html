@@ -1,0 +1,39 @@
+<div ng-controller="contactController">		
+	<form name="contactForm" ng-submit="submit_data(user)">
+	  <div class="form-group" style="text-align: center;">
+	  	<h2>Contact Form<h2>
+	    
+	  </div>
+	  <div class="form-group" ng-class="{ 'has-error': contactForm.name.$invalid }">
+	  	<label for="inputName" class="control-label">Name</label>
+	    <input type="text" class="form-control" name="name" ng-model="user.name" required>
+	  </div>
+
+	  <div class="form-group" ng-class="{ 'has-error': contactForm.email.$invalid }">
+	  	<label for="inputMail" class="control-label">Email</label>
+	    <input type="email" class="form-control" name="email" ng-model="user.email" placeholder="xyz@mail.com" required>
+	  </div>
+
+	  <div class="form-group" ng-class="{ 'has-error': contactForm.subject.$invalid }">
+	  	<label for="inputSubject" class="control-label">Subject</label>	    
+	    <select ng-model="contactForm.selectedSubject"  ng-options="x for x in subjects track by $index" class="form-control" required>
+		</select>
+
+	  </div>
+
+	  <div class="form-group" ng-class="{ 'has-error': contactForm.desc.$invalid }">
+	    <label for="inputDesc" class="control-label">Description</label>
+	    <textarea id="inputDesc" class="form-control" name="desc" ng-model="user.contactDecs" required>
+	    	
+	    </textarea>	    
+	  </div>
+
+  	  <div class="form-group" style="text-align: right;">
+	    <button type="submit" class="btn btn-primary">Submit</button>
+	  </div>
+	</form>
+	<div class="alert alert-success" ng-show="msg_success" id="appBusyIndicator">
+  		Form Successfully Submited....
+	</div>
+
+</div>

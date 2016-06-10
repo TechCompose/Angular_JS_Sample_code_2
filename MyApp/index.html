@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="./../bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link href="myapp.css" rel="stylesheet" type="text/css"/>    	
+	</head>
+
+<body ng-app="myApp">
+<div ng-controller="myCtrl"> 
+	<!-- slider  -->
+		<my-slider images="images"></my-slider>
+	<!-- slider  -->
+
+
+
+	
+	<div id='InputForm' class="container set-width" ng-init="pInEdit=false" ng-init="pData='-1" >	
+		<form name='personInfo' ng-submit='submit(person)' ng-model='pInEdit'>					
+			<div class="container">		  
+		  <table class="table table-striped set-width">
+		    <thead>
+		      <tr>
+		        <th colspan="4"><h3>Personal Information</h3></th>		        		        
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>Name</td>
+		        <td>
+		        	<input type='text' name='personName' ng-model="person.pName" class='form-control' required> 
+					<span ng-show="personInfo.personName.$invalid">Field Can't Be Blank</span>
+		        </td>		        
+		      </tr>	
+
+		      <tr>
+		      	<td>Email</td>
+		        <td>
+		        	<input type='email' name='personMail' ng-model="person.pMail" class='form-control'  placeholder="xyz@mail.com"> 
+					<span ng-show="personInfo.personMail.$invalid">Enter Valid Mail</span>
+		        </td>		        		      
+		      </tr>	
+
+		      <tr>
+			      <td>Phone Number</td>
+			      <td>
+			    	<input name='personContact' ng-model="person.pContact" class='form-control'  > 
+			      </td>		        
+		      </tr>	
+
+		      <tr>
+			      <td>DOB</td>
+			        <td>
+			        	<p class="input-group">
+          					<input type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-model="person.pDob" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          					<span class="input-group-btn">
+            					<button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          					</span>
+        				</p>
+			        </td>		        
+		      </tr>		      
+
+		      <tr>
+		      	<td colspan="2">
+		      		<input type="submit" class='form-control set-width-30 pull-right btn btn-info' name='Submit' value="submit"> </input>
+		      	</td>
+		      </tr>
+		    </tbody>
+		  </table>		  
+		</div>
+			
+		</form>		
+	</div>
+	
+		<div class="container set-width-60">
+		  <h2>Personal Information</h2>		  
+		  <table class="table table-striped">
+		    <thead>
+		      <tr>		      	
+		        <th>Name</th>		        
+		        <th>Email</th>
+		        <th>Phone No</th>
+		        <th>DOB</th>
+		        <th class='pull-center' colspan="2">Action</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr ng-repeat='x in list track by $index'>		      			      	
+		        <td>{{x.pName}}</td>
+		        <td>{{x.pMail}}</td>
+		        <td>{{x.pContact}}</td>
+		        <td>{{x.pDob | date:'MMM, dd, yyyy'}}   
+		          
+		        </td>
+		        <td class="pull-center">
+		        	<input type="button" ng-click="edit(x, $index)" value="Edit"></input>
+		        	<span style="width:10% !important;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		        	<input type="button" ng-click="remove(x)" value="Remove"></input>
+		        </td>
+		        
+		      </tr>		      
+		    </tbody>
+		  </table>
+		</div>
+
+</div>
+<!-- load application controller -->
+<script src="./../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="./../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="./../bower_components/angular/angular.js"></script>
+<script src="./../bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="./../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="./../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src='myAppController.js'></script>
+</div>
+</body>
+</html>
